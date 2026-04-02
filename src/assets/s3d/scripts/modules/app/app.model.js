@@ -1465,6 +1465,7 @@ class AppModel extends EventEmitter {
     config.slider_scale_container_logo = this.config.slider_scale_container_logo;
     config.map = this.config.map;
     // config.constructionProgressItemById = this.constructionProgressItemById;
+    config.asyncGetConstructionProgressItemById = this.asyncGetConstructionProgressItemById;
     config.show_prices = this.config.show_prices;
     config.floor_page_settings = this.config.floor;
     config.parent = this;

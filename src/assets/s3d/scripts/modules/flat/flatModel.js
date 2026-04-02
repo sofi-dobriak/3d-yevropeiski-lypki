@@ -39,6 +39,7 @@ import {
 } from '../../../../s3d2/scripts/modules/AudioAssistant/smartoToursSelectors';
 import InstallmentCalculator from './installmentCalculator/installmentCalculator';
 import { initLazyMap } from './mapBox/mapInit';
+import constructionPopup from '../templates/flatPage/constructionPopup';
 
 const ErrorCallbackUpdateLocation = (i18n, hostname, keyMessage, type = '', newLocation) => err => {
   sendError(i18n, hostname, keyMessage, type, err);
@@ -68,6 +69,7 @@ class FlatModel extends EventEmitter {
     this.i18n = i18n;
     this.history = config.history;
     this.favouritesIds$ = config.favouritesIds$;
+    this.asyncGetConstructionProgressItemById = config.asyncGetConstructionProgressItemById;
     this.createWrap();
     this.wrapper = document.querySelector(`.js-s3d__wrapper__${this.type}`);
     this.imagesType = '';
@@ -866,6 +868,36 @@ class FlatModel extends EventEmitter {
     console.log('gallerySliderInit', 'no gallery slider container found');
   }
 
+  // constructionSliderInit() {
+  //   // if (this.galleryConstructionSliderInstance) this.gallerySliderInstance.destroy();
+  //   if (this.wrapper.querySelector('[data-flat-construction-gallery-swiper]')) {
+  //     this.galleryConstructionSliderInstance = new Swiper(
+  //       '[data-flat-construction-gallery-swiper]',
+  //       {
+  //         modules: [Navigation],
+  //         on: {
+  //           slideChange: instance => {
+  //             const currentSlide = instance.realIndex + 1;
+  //             const $currentSlide = this.wrapper.querySelector(
+  //               '[data-flat-construction-gallery-swiper-current-slide]',
+  //             );
+  //             $currentSlide.textContent = currentSlide;
+  //           },
+  //         },
+  //         slidesPerView: 1,
+  //         loop: true,
+  //         navigation: {
+  //           nextEl: '[data-flat-construction-gallery-swiper-button-next]',
+  //           prevEl: '[data-flat-construction-gallery-swiper-button-prev]',
+  //         },
+  //       },
+  //     );
+
+  //     return;
+  //   }
+  //   console.log('galleryConstructionSliderInit', 'no construction gallery slider container found');
+  // }
+
   constructionSliderInit() {
     // if (this.galleryConstructionSliderInstance) this.gallerySliderInstance.destroy();
     if (this.wrapper.querySelector('[data-flat-construction-gallery-swiper]')) {
@@ -893,6 +925,62 @@ class FlatModel extends EventEmitter {
 
       return;
     }
+
+    if (!this.initClosePopup) {
+      this.initClosePopup = true;
+      document.body.addEventListener('click', evt => {
+        if (evt.target.closest('[data-construction-popup-close]')) {
+          evt.target.closest('[data-construction-popup]').remove();
+        }
+      });
+      document.body.addEventListener('click', evt => {
+        const target = evt.target.closest('[data-single-construction-id]');
+        if (!target) return;
+        const id = target.dataset.singleConstructionId;
+        this.asyncGetConstructionProgressItemById(id).then(res => {
+          const fields = get(res, 'acf', null);
+          if (!fields) return;
+          document.querySelectorAll('[data-construction-popup]').forEach(el => el.remove());
+          document.body.insertAdjacentHTML(
+            'beforeend',
+            constructionPopup({
+              ...fields,
+              gallery: fields.hid_img_list ? fields.hid_img_list.map(img => img.img.url) : [],
+              videos: fields.hid_video_list ? fields.hid_video_list : [],
+              date: fields.hid_date,
+              text: fields.hid_text,
+            }),
+          );
+          const swiper = new Swiper('[data-construction-popup-slider]', {
+            modules: [Navigation],
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            loop: false,
+            on: {
+              slideChange: instance => {
+                const currentSlide = instance.activeIndex + 1;
+                const $currentSlide = document.body.querySelector(
+                  '[data-construction-popup-slider-counter]',
+                );
+                $currentSlide.textContent = currentSlide;
+              },
+            },
+            // navigation: {
+            //   nextEl: '[data-construction-popup-slider-next]',
+            //   prevEl: '[data-construction-popup-slider-prev]'
+            // }
+          });
+          document
+            .querySelector('[data-construction-popup-slider-next]')
+            .addEventListener('click', () => swiper.slideNext());
+          document
+            .querySelector('[data-construction-popup-slider-prev]')
+            .addEventListener('click', () => swiper.slidePrev());
+        });
+        // constructionPopup
+      });
+    }
+
     console.log('galleryConstructionSliderInit', 'no construction gallery slider container found');
   }
 
