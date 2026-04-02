@@ -653,7 +653,10 @@ class AppModel extends EventEmitter {
   setDefaultConfigFlyby(config) {
     if (config['intro']) {
       this.defaultFlybySettings = {
-        type: 'intro',
+        // type: 'intro',
+        type: 'flyby',
+        side: 'outside',
+        flyby: '1',
       };
     } else if (config['genplan']) {
       this.defaultFlybySettings = {
@@ -1831,26 +1834,67 @@ class AppModel extends EventEmitter {
       }
     } catch (err) {}
   }
+  // async asyncGetConstructionProgressList() {
+  //   if (this.config.hideConstructionProgress) return;
+
+  //   const url =
+  //     window.status === 'local'
+  //       ? `${defaultStaticPath}/construction-progress-mock-list.json`
+  //       : '/wp-admin/admin-ajax.php';
+  //   const method = window.status === 'local' ? 'get' : 'post';
+
+  //   try {
+  //     const constructionProgressDataList = await asyncRequest({
+  //       url,
+  //       method,
+  //       data: {
+  //         action: 'getConstructionProgressList',
+  //       },
+  //     });
+
+  //     if (Array.isArray(constructionProgressDataList)) {
+  //       this.constructionProgressDataList = constructionProgressDataList;
+  //     } else {
+  //       console.warn(
+  //         'Expected an array for constructionProgressDataList, but received:',
+  //         constructionProgressDataList,
+  //       );
+  //       this.constructionProgressDataList = []; // Default to empty array
+  //     }
+  //   } catch (err) {
+  //     console.error('Error fetching construction progress data:', err);
+  //   }
+  // }
+
   async asyncGetConstructionProgressList() {
     if (this.config.hideConstructionProgress) return;
 
     const url =
       window.status === 'local'
         ? `${defaultStaticPath}/construction-progress-mock-list.json`
-        : '/wp-admin/admin-ajax.php';
-    const method = window.status === 'local' ? 'get' : 'post';
+        : '/wp-json/wp/v2/posts?categories=2';
+    const method = window.status === 'local' ? 'get' : 'get';
 
     try {
       const constructionProgressDataList = await asyncRequest({
         url,
         method,
-        data: {
-          action: 'getConstructionProgressList',
-        },
+        // data: {
+        //   action: 'getConstructionProgressList',
+        // },
       });
 
       if (Array.isArray(constructionProgressDataList)) {
-        this.constructionProgressDataList = constructionProgressDataList;
+        this.constructionProgressDataList = constructionProgressDataList.map(item => {
+          const date = get(item, 'acf.hid_date', '01/01/2025');
+          return {
+            id: item.id,
+            img: get(item, 'acf.hid_img_list[0].img.url', ''),
+            day: date.split('/')[0],
+            month: this.i18n.t(`monthes.${date.split('/')[1]}`),
+            year: date.split('/')[2],
+          };
+        });
       } else {
         console.warn(
           'Expected an array for constructionProgressDataList, but received:',
@@ -1863,29 +1907,42 @@ class AppModel extends EventEmitter {
     }
   }
 
+  // async asyncGetConstructionProgressItemById(id) {
+  //   if (this.config.hideConstructionProgress) return;
+  //   const url =
+  //     window.status === 'local'
+  //       ? `${defaultStaticPath}/construction-progress-mock-id.json`
+  //       : '/wp-admin/admin-ajax.php';
+  //   const method = window.status === 'local' ? 'get' : 'post';
+
+  //   try {
+  //     const constructionItemData = await asyncRequest({
+  //       url,
+  //       method,
+  //       data: {
+  //         action: 'getConstructionProgressItemById',
+  //         id,
+  //       },
+  //     });
+  //     if (isObject(constructionItemData)) {
+  //       this.constructionProgressDataItemById = [...constructionItemData];
+  //     }
+  //   } catch (err) {
+  //     console.warn(err);
+  //   }
+  // }
+
   async asyncGetConstructionProgressItemById(id) {
-    if (this.config.hideConstructionProgress) return;
+    // if (this.config.hideConstructionProgress) return;
     const url =
       window.status === 'local'
         ? `${defaultStaticPath}/construction-progress-mock-id.json`
-        : '/wp-admin/admin-ajax.php';
-    const method = window.status === 'local' ? 'get' : 'post';
-
-    try {
-      const constructionItemData = await asyncRequest({
-        url,
-        method,
-        data: {
-          action: 'getConstructionProgressItemById',
-          id,
-        },
-      });
-      if (isObject(constructionItemData)) {
-        this.constructionProgressDataItemById = [...constructionItemData];
-      }
-    } catch (err) {
-      console.warn(err);
-    }
+        : `/wp-json/wp/v2/posts/${id}`;
+    const method = window.status === 'local' ? 'get' : 'get';
+    return asyncRequest({
+      url,
+      method,
+    });
   }
   restrictionInIFrameHandler() {
     if (!isInIframe()) return;

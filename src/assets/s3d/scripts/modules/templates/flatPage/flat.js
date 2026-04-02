@@ -240,6 +240,7 @@ function Flat({
       ${s3d2_paymentSection({ i18n, flat, payment_list })}
       <div id="map-root"></div>
       ${FlatDocumentationScreen(i18n, projectDocs)}
+      ${FlatConstructionProgressScreen(i18n, constructionProgressDataList)}
       ${s3d2_contactFormHtml1}
       ${s3d2_contactFormHtml2}
       ${s3d2_contactFormHtml3}
@@ -281,7 +282,7 @@ function Flat({
       ${s3dApartmentsList(i18n, flat, favouritesIds$, showPrices, otherTypeFlats)}
 
       ${VillaFinancialTermsScreen(i18n, financialTermsData)}
-      ${FlatConstructionProgressScreen(i18n, constructionProgressDataList)}
+
       <div class="s3d-villa__contact-screen">
       ${VillaContactLocation(
         i18n,
