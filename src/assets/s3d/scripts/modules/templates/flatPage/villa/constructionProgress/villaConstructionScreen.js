@@ -1,3 +1,4 @@
+import s3d2_SwiperButtons from '../../../../../../../s3d2/scripts/templates/common/s3d2_SwiperButtons';
 import VillaConstructionProgressCard from './villaConstructionProgressCard';
 import Swiper, { Navigation } from 'swiper';
 
@@ -24,7 +25,11 @@ export default function VillaConstructionProgressScreen(i18n, constructionProgre
                 .join('')}
             </div>
         </div>
-        <div class="s3d-villa__construction-swiper-nav-wrap">
+        ${s3d2_SwiperButtons({
+          classNamePrev: 'construction-swiper-button-prev',
+          classNameNext: 'construction-swiper-button-next',
+        })}
+        <!--<div class="s3d-villa__construction-swiper-nav-wrap">
                 <div class="s3d-villa__construction-swiper-button-prev swiper-button-prev">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.90658 12.5062L12.7036 17.3055L11.9963 18.0124L6.34625 12.3597L5.99294 12.0062L6.34625 11.6527L11.9963 6L12.7036 6.70694L7.90658 11.5062H18V12.5062H7.90658Z" fill="#1A1E21"/>
@@ -35,19 +40,21 @@ export default function VillaConstructionProgressScreen(i18n, constructionProgre
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0864 12.6763L11.2932 17.4696L12.0003 18.1767L17.647 12.5298L18.0005 12.1763L17.647 11.8227L12.0003 6.17578L11.2932 6.88288L16.0864 11.6763H6V12.6763H16.0864Z" fill="#1A1E21"/>
                     </svg>
                 </div>
-          </div>
+          </div>-->
       </div>
-      
-      
     </div>
   `;
+
   setTimeout(() => {
     const swiperContainer = document.querySelector(`#${containerId} .swiper`);
+
     if (swiperContainer) {
       new Swiper(swiperContainer, {
         navigation: {
-          nextEl: `#${containerId} .s3d-villa__construction-swiper-button-next`,
-          prevEl: `#${containerId} .s3d-villa__construction-swiper-button-prev`,
+          // nextEl: `#${containerId} .s3d-villa__construction-swiper-button-next`,
+          // prevEl: `#${containerId} .s3d-villa__construction-swiper-button-prev`,
+          nextEl: `#${containerId} .construction-swiper-button-next`,
+          prevEl: `#${containerId} .construction-swiper-button-prev`,
         },
         slidesPerView: 4,
         spaceBetween: 40,
@@ -72,6 +79,9 @@ export default function VillaConstructionProgressScreen(i18n, constructionProgre
           },
         },
       });
+
+      swiper.on('breakpoint', disableNavIfNeeded);
+      disableNavIfNeeded();
     } else {
       console.warn(`Swiper container not found for ID: ${containerId}`);
     }

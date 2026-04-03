@@ -13,6 +13,9 @@ polygon[data-type='infrastructure'] {
 
 polygon[data-type='flyby'] {
   stroke: var(--s3d2-color-border-gray-200);
+  // stroke: var(--s3d2-color-brand-800);
+  // stroke: var(--color-surface-semantic-success);
+  stroke-width: 4px;
 }
 
 polygon[data-type='flat'],

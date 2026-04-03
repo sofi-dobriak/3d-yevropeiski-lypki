@@ -962,7 +962,13 @@ class FlatModel extends EventEmitter {
                 const $currentSlide = document.body.querySelector(
                   '[data-construction-popup-slider-counter]',
                 );
+                // $currentSlide.textContent = currentSlide;
+                if (!$currentSlide) return;
                 $currentSlide.textContent = currentSlide;
+                updateDisabledState(instance);
+              },
+              afterInit: instance => {
+                updateDisabledState(instance);
               },
             },
             // navigation: {
@@ -970,6 +976,16 @@ class FlatModel extends EventEmitter {
             //   prevEl: '[data-construction-popup-slider-prev]'
             // }
           });
+
+          function updateDisabledState(instance) {
+            const prevBtn = document.querySelector('[data-construction-popup-slider-prev]');
+            const nextBtn = document.querySelector('[data-construction-popup-slider-next]');
+            if (!prevBtn || !nextBtn) return;
+
+            prevBtn.classList.toggle('swiper-button-disabled', instance.isBeginning);
+            nextBtn.classList.toggle('swiper-button-disabled', instance.isEnd);
+          }
+
           document
             .querySelector('[data-construction-popup-slider-next]')
             .addEventListener('click', () => swiper.slideNext());

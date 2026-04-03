@@ -1,4 +1,5 @@
 @use "../../globals/fonts";
+@use "../../globals/s3d2_fonts";
 
 .s3d-villa {
   &__construction {
@@ -116,10 +117,10 @@
         justify-content: space-between;
         align-items: flex-start;
         &__day {
-          @include fonts.text-style-3-d-fonts-1920-body-regular;
-          color: var(--s3d2-color-gray-200);
+          @include s3d2_fonts.fonts-3d-body;
+          color: var(--s3d2-color-gray-900);
           @media screen and (max-width: 768px) {
-            @include fonts.text-style-villas-1366-button;
+            @include s3d2_fonts.fonts-3d-body;
           }
         }
 
@@ -132,11 +133,14 @@
           align-items: center;
           position: relative;
           overflow: hidden;
-          background: var(--s3d2-color-gray-200);
-          border-radius: 50%;
+          // background: var(--s3d2-color-gray-200);
+          // border-radius: 50%;
+          border: none;
           @media screen and (max-width: 1920px) {
-            width: 64px;
-            height: 64px;
+            // width: 64px;
+            // height: 64px;
+            width: 24px;
+            height: 24px;
           }
           @media screen and (max-width: 768px) {
             width: var(--space-12);
@@ -180,7 +184,8 @@
         align-items: flex-end;
         width: 100%;
         &__day {
-          @include fonts.text-style-3-d-fonts-1920-h-1();
+          // @include fonts.text-style-3-d-fonts-1920-h-1();
+          @include s3d2_fonts.fonts-3d-h1;
           font-size: 96px;
           line-height: 100%;
           color: var(--s3d2-color-gray-200);
@@ -189,15 +194,18 @@
             font-size: 64px;
           }
           @media screen and (max-width: 768px) {
-            @include fonts.text-style-villas-375-h-2;
+            // @include fonts.text-style-villas-375-h-2;
+            @include s3d2_fonts.fonts-3d-h2;
           }
         }
 
         &__month {
-          @include fonts.text-style-3-d-fonts-1920-body-regular();
+          // @include fonts.text-style-3-d-fonts-1920-body-regular();
+          @include s3d2_fonts.fonts-3d-body;
           color: var(--s3d2-color-gray-200);
           @media screen and (max-width: 768px) {
-            @include fonts.text-style-villas-1366-button;
+            // @include fonts.text-style-villas-1366-button;
+            @include s3d2_fonts.fonts-3d-body;
           }
           @media screen and (min-width: 769px) {
             margin-bottom: var(--space-2);
