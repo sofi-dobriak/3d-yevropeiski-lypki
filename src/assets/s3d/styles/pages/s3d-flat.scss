@@ -1971,7 +1971,7 @@ div:where(.swal2-container) div:where(.swal2-popup) {
     }
     @media screen and (max-width: 600px) {
       &:after {
-        content: '';
+        // content: '';
         position: absolute;
         left: 0;
         bottom: 0;
