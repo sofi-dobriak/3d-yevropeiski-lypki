@@ -259,6 +259,7 @@
     "pools": "басейни",
     "from_window_view": "Вигляд 360",
     "scroll": "Прокрутити",
+    "see_all_photos": "Побачити всі {{count}} фотографій",
     "documantation": {
       "download": "Завантажити"
     },
@@ -448,7 +449,7 @@
       "floor": "Поверх",
       "section": "Секція",
       "price_m2_from": "Від $t(currency_label) за $t(area_unit)",
-      "all-flats": "Всього резиденцій",
+      "all-flats": "Всього квартир",
       "free-flats": "Доступно",
       "free-flats--": "Доступно:",
       "from": "Від",

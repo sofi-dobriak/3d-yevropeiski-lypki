@@ -142,7 +142,7 @@
     }
 
     &:not([data-count='0']) {
-      background: var(--s3d2-color-surface-gray-900);
+      background: var(--s3d2-color-brand-900);
       color: var(--s3d2-color-icon-gray-200);
 
       & + .s3d__favourite {

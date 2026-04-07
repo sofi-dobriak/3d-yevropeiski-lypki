@@ -24,7 +24,14 @@ class FavouritesController {
       // eslint-disable-next-line radix
       const id = parseInt(card.getAttribute('data-compare-item-open'));
       model.selectElementHandler(id);
+
+      // після переходу на сторінку квартири — оновити стан кнопок
+      requestAnimationFrame(() => {
+        model.emit('updateFavouritesInput', model.favouritesIds$.value);
+      });
     });
+
+
   }
 }
 

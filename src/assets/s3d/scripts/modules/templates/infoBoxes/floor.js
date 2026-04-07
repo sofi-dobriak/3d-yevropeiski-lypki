@@ -16,7 +16,9 @@ function Floor(i18n, data) {
 
   const floorImageUrlNotFormated = get(async_data, 'url', false);
   const defaultModulePath = '/wp-content/themes/3d/assets';
-  const floorImageUrl = `${defaultModulePath}${floorImageUrlNotFormated}`;
+  const floorImageUrl = floorImageUrlNotFormated
+    ? `${defaultModulePath}${floorImageUrlNotFormated}`
+    : `/wp-content/themes/3d/assets/s3d/images/examples/no-image.png`;
 
   window.addEventListener(
     'floor-cached',
@@ -56,6 +58,7 @@ function Floor(i18n, data) {
     </div>
   `
       : '';
+
   const $price_m2 =
     show_prices && properties.price_m2
       ? `
