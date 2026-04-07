@@ -232,7 +232,6 @@
         color: var(--s3d2-color-text-gray-900);
         width: fit-content;
         // padding: var(--space-1) var(--space-3);
-        
       }
     }
 
@@ -299,32 +298,32 @@
       .s3d-infoBox__block {
         width: 100%;
         &--status {
-      background-color: var(--color-surface-success);
-      border-radius: var(--space-2);
-      display: flex;
-      align-items: center;
-      gap: var(--space-1);
-      width: fit-content;
-      padding: var(--space-1);
-      &-text{
-        @include s3d2_fonts.fonts-3d-tiny;
-        color: var(--color-surface-gray-900);
-      }
-    }
-    &--finish-date {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding:  6px var(--space-2);
-      border-radius:100px ;
-      width: fit-content;
-      border: 1px solid var(--s3d2-color-border-gray-900-transparent-10);
-      &-text{
-        @include s3d2_fonts.fonts-3d-tiny;
-        color: var(--color-surface-gray-900);
-      }
-    }
+          background-color: var(--color-surface-success);
+          border-radius: var(--space-2);
+          display: flex;
+          align-items: center;
+          gap: var(--space-1);
+          width: fit-content;
+          padding: var(--space-1);
+          &-text {
+            @include s3d2_fonts.fonts-3d-tiny;
+            color: var(--color-surface-gray-900);
+          }
+        }
+        &--finish-date {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px var(--space-2);
+          border-radius: 100px;
+          width: fit-content;
+          border: 1px solid var(--s3d2-color-border-gray-900-transparent-10);
+          &-text {
+            @include s3d2_fonts.fonts-3d-tiny;
+            color: var(--color-surface-gray-900);
+          }
+        }
       }
 
       .s3d-infoBox__link {
@@ -648,7 +647,6 @@
 
   &__block {
     width: calc(100% - var(--info-column-gap) * 0.5);
-    
   }
 
   &__text {

@@ -99,7 +99,7 @@ export default function s3dDashboard(
                            i18n.t('currency_label') == '$'
                              ? `${i18n.t('currency_label')} ${numberWithCommas(flat.price)}`
                              : `${numberWithCommas(flat.price)}
-                                <span> ${i18n.t('currency_label')}</span>`
+                                <span> ${i18n.t('Flat.information.priceText')}</span>`
                          }
 
                         </span>

@@ -102,7 +102,7 @@ function Card(
     }
     return `
       <div class="s3d-card__price total">
-        ${numberWithCommas(price)} ${i18n.t('currency_label')}
+        ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
       </div>
     `;
   };

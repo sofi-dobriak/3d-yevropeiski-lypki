@@ -53,7 +53,10 @@ function Floor(i18n, data) {
       ${
         currency === '$'
           ? `${i18n.t(`currency_label`, '')} ${numberWithCommas(properties._price.value_raw)}`
-          : `${numberWithCommas(properties._price.value_raw)} ${i18n.t(`currency_label`, '')}`
+          : `${numberWithCommas(properties._price.value_raw)} ${i18n.t(
+              `Flat.information.priceText`,
+              '',
+            )}`
       }
     </div>
   `
@@ -67,14 +70,14 @@ function Floor(i18n, data) {
         ${
           currency === '$'
             ? `
-            ${i18n.t(`currency_label`, '')}
+            ${i18n.t(`Flat.information.priceText`, '')}
             ${numberWithCommas(properties.price_m2.value_raw)}
             ${i18n.t(`Flat.information.per`, '')}
             ${i18n.t(`area_unit`, '')}
             `
             : `
             ${numberWithCommas(properties.price_m2.value_raw)}
-            ${i18n.t(`currency_label`, '')}
+            ${i18n.t(`Flat.information.priceText`, '')}
             ${i18n.t(`Flat.information.per`, '')}
             ${i18n.t(`area_unit`, '')}
           `
