@@ -259,7 +259,7 @@
     "pools": "басейни",
     "from_window_view": "Вигляд 360",
     "scroll": "Прокрутити",
-    "see_all_photos": "Побачити всі {{count}} фотографій",
+    "see_all_photos": "Подивитися всі {{count}} фотографій",
     "documantation": {
       "download": "Завантажити"
     },
@@ -280,7 +280,7 @@
       "with": "3D",
       "without": "2D",
       "gallery_btn": "Галерея",
-      "showIn3d": "У 3D",
+      "showIn3d": "На 3D",
       "view": "Переглянути",
       "windowView": "З вікна",
       "compare": "Порівняти",

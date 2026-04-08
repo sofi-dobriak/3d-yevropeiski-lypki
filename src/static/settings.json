@@ -311,7 +311,7 @@
   "currency_list": [],
   "show_prices": true,
   "slider_scale_container_logo": "/wp-content/themes/3d/assets/s3d/images/logo_el_dark_text.svg",
-  "languages": "ua/en",
+  "languages": "uk/en",
   "show_phoneNumber": "044 233 11 33",
   "hideDocumentation": false,
   "hideExterior": true,
@@ -320,7 +320,7 @@
   "social_media_links_faq": "Якщо строчка пуста, то кнопка не буде відображатися",
   "social_media_links": {
     "telegram": "https://t.me/eurolipki_progroup",
-    "tiktok":"https://www.tiktok.com/@eurolipki?_r=1&_t=ZS-95KmoEeH5U5",
+    "tiktok": "https://www.tiktok.com/@eurolipki?_r=1&_t=ZS-95KmoEeH5U5",
     "instagram": "https://www.instagram.com/eurolipki?igsh=MWtwZHk1MHlhMGNydg%3D%3D",
     "facebook": "https://www.facebook.com/share/178iEHhPD5/?mibextid=wwXIfr",
     "youtube": "https://www.youtube.com/@eurolipki/videos"
@@ -340,7 +340,7 @@
     },
     "socials": {
       "telegram": "https://t.me/eurolipki_progroup",
-      "tiktok":"https://www.tiktok.com/@eurolipki?_r=1&_t=ZS-95KmoEeH5U5",
+      "tiktok": "https://www.tiktok.com/@eurolipki?_r=1&_t=ZS-95KmoEeH5U5",
       "instagram": "https://www.instagram.com/eurolipki?igsh=MWtwZHk1MHlhMGNydg%3D%3D",
       "facebook": "https://www.facebook.com/share/178iEHhPD5/?mibextid=wwXIfr",
       "youtube": "https://www.youtube.com/@eurolipki/videos"

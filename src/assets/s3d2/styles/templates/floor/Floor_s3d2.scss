@@ -94,6 +94,7 @@
       background-color: var(--floor-list-bg);
       backdrop-filter: blur(20px);
       overflow: hidden;
+      border: 1px solid var(--s3d2-color-border-gray-600-transparent-40);
       z-index: 2;
       &-button {
         width: 16px;
@@ -103,9 +104,8 @@
         justify-content: center;
       }
       svg {
-        width: 7px;
-        height: 4px;
-        // fill: var(--birdy-fill);
+        width: 20px;
+        height: 20px;
         fill: var(--floor-item-color);
       }
     }

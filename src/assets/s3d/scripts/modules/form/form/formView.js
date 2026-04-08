@@ -242,7 +242,7 @@ export default class FormView {
                     </div>
                     <div class="form-field form-field--s3d2 form-field-input" data-field-input="data-field-input" data-field-email="data-field-email" data-status="field--inactive">
                         <div class="s3d2__contact__form__title">
-                          ${i18next.t('Your email')}:
+                          ${i18next.t('Your email')}*:
                         </div>
                         ${TextInput({
                           text: i18next.t('Your email'),
@@ -327,10 +327,10 @@ export default class FormView {
             rule: yup
               .string()
               .required(i18next.t('required'))
-              .test('phone-validation', i18next.t('field_too_short', { cnt: 10 }), function(value) {
+              .test('phone-validation', i18next.t('field_too_short', { cnt: 9 }), function(value) {
                 if (!value) return false;
                 const digitsOnly = value.replace(/\D/g, '');
-                return digitsOnly.length >= 10;
+                return digitsOnly.length >= 9;
               }),
             defaultMessage: i18next.t('phone'),
             valid: false,

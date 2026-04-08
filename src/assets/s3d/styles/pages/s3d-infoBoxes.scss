@@ -272,6 +272,10 @@
       background-color: var(--s3d2-color-surface-gray-200-transparent-80);
       backdrop-filter: blur(20px);
 
+      @media screen and (max-width: 1023px) {
+        backdrop-filter: none;
+      }
+
       .s3d-infoBox__close {
         position: absolute;
         top: 3px;
@@ -432,6 +436,10 @@
       padding: var(--space-2);
       max-width: 184px;
 
+      @media screen and (max-width: 1023px) {
+        backdrop-filter: none;
+      }
+
       .s3d-infoBox__title {
         @include s3d2_fonts.fonts-3d-body;
         text-transform: none;
@@ -455,6 +463,10 @@
   justify-content: space-between;
   border-radius: var(--border-space-2);
   overflow: hidden;
+
+  @media screen and (max-width: 1023px) {
+    backdrop-filter: none;
+  }
 
   .s3d-infoBox__flat__alert__middle {
     @include s3d2_fonts.fonts-3d-small-bold;
@@ -964,6 +976,9 @@
   background-color: var(--s3d2-color-surface-gray-200-transparent-80);
   position: relative;
   backdrop-filter: blur(20px);
+  @media screen and (max-width: 1023px) {
+    backdrop-filter: none;
+  }
   .s3d__close.s3d-infoBox__close {
     display: flex;
     position: static;

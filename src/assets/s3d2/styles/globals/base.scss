@@ -37,3 +37,8 @@ html:not(:fullscreen) {
     display: none;
   }
 }
+
+html {
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
+}

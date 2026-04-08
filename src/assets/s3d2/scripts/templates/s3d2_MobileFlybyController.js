@@ -11,12 +11,16 @@ export default function s3d2_MobileFlybyController(i18n, config) {
 
   window.addEventListener('updateFsm', evt => {
     const buttons = document.querySelectorAll('[data-s3d2-update-content-btn]');
-    const type = evt.detail.type; 
+    const type = evt.detail.type;
+
     let title = '';
     if (evt.detail.type != 'flyby') {
-        title = i18n.t('ctr.nav.' + type);
+      title = i18n.t('ctr.nav.' + type);
     } else {
-      title = i18n.t('ctr.nav.' + "flyby" + '_' + evt.detail.flyby + '_' + evt.detail.side);
+      title = i18n.t('ctr.nav.' + 'flyby' + '_' + evt.detail.flyby + '_' + evt.detail.side);
+    }
+    if (!type) {
+      title = i18n.t('ctr.nav.flyby_1_outside');
     }
     buttons.forEach(button => {
       button.querySelector('span').textContent = title;
@@ -27,7 +31,7 @@ export default function s3d2_MobileFlybyController(i18n, config) {
     <div class="s3d2-mobile-flyby">
       ${s3d2_IconButton(
         's3d2-mobile-flyby__button js-toggle-button',
-        i18n.t('ctr.nav.fisher_island'),
+        i18n.t('ctr.nav.genplan'),
         'data-icon-open="Tiny chevron down" data-icon-closed="close" data-s3d2-update-content-btn',
         'Tiny chevron down',
       )}
@@ -50,17 +54,17 @@ export default function s3d2_MobileFlybyController(i18n, config) {
         </div>
 
         <div class="s3d2-mobile-flyby__content__second-block">
-          ${s3d2_IconButton(
+          <!--${s3d2_IconButton(
             's3d2-IconButton--dark js-s3d-nav__btn',
-            i18n.t('ctr.nav.fisher_island'),
+            i18n.t('ctr.nav.genplan'),
             'data-type="flyby" data-flyby="1" data-side="outside"',
             '',
-          )}
+          )}-->
           ${dataForFlybyDropdown
-          .map(item => {
-            return `<button ${item.attributes}  class="s3d2-Dropdown__item ${item.className}">${item.title}</button>`;
-          })
-          .join('')}
+            .map(item => {
+              return `<button ${item.attributes}  class="s3d2-Dropdown__item ${item.className}">${item.title}</button>`;
+            })
+            .join('')}
           <!--${s3d2_Dropdown(
             dataForFlybyDropdown,
             i18n.t('ctr.nav.flat'),
@@ -80,8 +84,6 @@ export default function s3d2_MobileFlybyController(i18n, config) {
     ${s3d2_SpinNav(i18n)}
   `;
 }
-
-
 
 function toggleMobileMenuIcon(button) {
   const iconUse = button.querySelector('.s3d2-IconButton use');
@@ -118,4 +120,3 @@ export function initMobileFlybyListeners() {
     }
   }
 }
-  

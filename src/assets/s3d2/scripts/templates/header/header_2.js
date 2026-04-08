@@ -66,6 +66,7 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
 
   const $languageList = config.languages.split('/');
   document.documentElement.style.setProperty('--lang-count', $languageList.length);
+
   const $languageHandler =
     $languageList && $languageList.length > 1
       ? `
@@ -74,6 +75,7 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
       ${$languageList
         .map(lang => {
           const isActive = document.querySelector('html').getAttribute('lang') === lang;
+
           return `
             <li data-lang="${lang}" style="${isActive ? 'pointer-events: none; order: -1;' : ''}">
               <a href="${window.location.origin}/${lang}/3d/${window.location.search}${
@@ -87,6 +89,7 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
     </ul>
   </div>`
       : '';
+
   setTimeout(() => {
     document.querySelectorAll('.language-list li').forEach(el => {
       el.addEventListener('click', e => {
@@ -96,6 +99,7 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
       });
     });
   }, 100);
+
   const $phoneNumber = config.show_phoneNumber
     ? `<a class="s3d2-ButtonWithoutIcon phoneNumber" href="tel:${config.show_phoneNumber.replace(
         /[\s-]/g,

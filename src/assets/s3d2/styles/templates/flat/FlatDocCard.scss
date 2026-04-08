@@ -51,10 +51,12 @@
         gap: var(--space-6);
       }
     }
-    width: calc(24.71% - var(--space-10) / 2);
+    width: calc(100% - var(--space-10) / 2);
+    // width: calc(24.71% - var(--space-10) / 2);
 
     @media screen and (max-width: 1920px) {
-      width: calc(24.71% - var(--space-6) / 2);
+      width: calc(100% - var(--space-6) / 2);
+      // width: calc(24.71% - var(--space-6) / 2);
     }
 
     img {
