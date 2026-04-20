@@ -75,10 +75,11 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
       ${$languageList
         .map(lang => {
           const isActive = document.querySelector('html').getAttribute('lang') === lang;
-          const href =
-            lang === 'uk'
-              ? `${window.location.origin}/3d/${window.location.search}${window.location.hash}`
-              : `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}`;
+          const href = `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}&lng=${lang}`;
+          // const href =
+          //   lang === 'uk'
+          //     ? `${window.location.origin}/3d/${window.location.search}${window.location.hash}`
+          //     : `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}`;
 
           return `
             <li data-lang="${lang}" style="${isActive ? 'pointer-events: none; order: -1;' : ''}">
@@ -97,11 +98,11 @@ export default function header_2(i18n, { logo, menuSelector, config = {} }) {
       el.addEventListener('click', e => {
         e.preventDefault();
         const lang = e.currentTarget.getAttribute('data-lang');
-        // window.location.href = `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}`;
-        window.location.href =
-          lang === 'uk'
-            ? `${window.location.origin}/3d/${window.location.search}${window.location.hash}`
-            : `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}`;
+        window.location.href = `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}&lng=${lang}`;
+        // window.location.href =
+        //   lang === 'uk'
+        //     ? `${window.location.origin}/3d/${window.location.search}${window.location.hash}`
+        //     : `${window.location.origin}/${lang}/3d/${window.location.search}${window.location.hash}`;
       });
     });
   }, 100);
