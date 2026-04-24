@@ -77,7 +77,7 @@ class AppModel extends EventEmitter {
 
     this.browser = data.browser;
     this.typeSelectedFlyby$ = new BehaviorSubject('flat'); // flat, floor
-    this.highlightFlybySvgElements$ = new BehaviorSubject(false);
+    this.highlightFlybySvgElements$ = new BehaviorSubject(true);
     this.compass = this.compass.bind(this);
     this.horizontalCompass = this.horizontalCompass.bind(this);
 
@@ -1695,7 +1695,7 @@ class AppModel extends EventEmitter {
       this.emit('highlight-flyby-svg-elements', val);
     });
     setTimeout(() => {
-      this.highlightFlybySvgElements$.next(false);
+      this.highlightFlybySvgElements$.next(true);
     }, 0);
   }
 

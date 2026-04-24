@@ -144,6 +144,7 @@
         text-align: left;
         color: vars.$controller-text-color;
         white-space: nowrap;
+        backdrop-filter: blur(20px);
 
         @media screen and (max-width: 1024px) {
           text-align: center;

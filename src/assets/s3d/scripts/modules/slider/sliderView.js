@@ -8,6 +8,7 @@ import {
   isDesktop,
   isDesktopTouchMode,
   isMobile,
+  numberWithCommas,
 } from '../../../../s3d2/scripts/helpers/helpers_s3d2';
 import MobileSvgFlybyTooltip from '../../../../s3d2/scripts/templates/flyby/tooltips/MobileSvgFlybyTooltip';
 import { primaryInput } from 'detect-it';
@@ -283,7 +284,7 @@ class SliderView extends EventEmitter {
           // const { x, y } = center(normalizepolygonPoints(el.getAttribute('points')));
           let { x, y } = normalizePolygonPointsTop(el.getAttribute('points'));
           x -= 40;
-          y -= 40;
+          y += 20;
 
           const finishDate = get(this._model, ['flyby_finish_dates', `${flyby}-${side}`], '');
           let $finishDate = finishDate;
@@ -328,13 +329,15 @@ class SliderView extends EventEmitter {
                   this._model.show_prices === true
                     ? `${this._model.i18n.t('from')} ${this._model.i18n.t(
                         'currency_label',
-                      )} ${minPrice}`
+                      )} ${numberWithCommas(minPrice)}`
                     : '',
                 rightTitle2:
                   this._model.show_prices === true
                     ? `${this._model.i18n.t('from')} ${this._model.i18n.t(
                         'currency_label',
-                      )} ${minPriceM2} ${this._model.i18n.t('Floor.information.per_m2')}`
+                      )} ${numberWithCommas(minPriceM2)} ${this._model.i18n.t(
+                        'Floor.information.per_m2',
+                      )}`
                     : '',
                 totalFlatsInFlyby,
                 finishDate: $finishDate,

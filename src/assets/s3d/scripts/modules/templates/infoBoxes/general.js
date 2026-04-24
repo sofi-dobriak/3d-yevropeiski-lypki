@@ -65,16 +65,8 @@ function general(i18n, data) {
     </div>
   </div>
   `
-      : `
-  <div class="s3d-infoBox__block">
-    <div class="s3d-infoBox__title">
-      ${i18n.t('infoBox.from_price', {
-        text: '19 000',
-        currency: i18n.t('currencies.' + currency),
-      })}
-    </div>
-  </div>
-  `;
+      : ``;
+
   const $minPrice =
     show_prices && minPrice
       ? `
@@ -86,14 +78,7 @@ function general(i18n, data) {
     })}</div>
   </div>
   `
-      : `
-  <div class="s3d-infoBox__block">
-    <div class="s3d-infoBox__title">${i18n.t('infoBox.from_price', {
-      text: '1 000 000',
-      currency: i18n.t('currencies.' + currency),
-    })}</div>
-  </div>
-  `;
+      : ``;
 
   return `
     <div class="s3d-infoBox__general">

@@ -291,7 +291,9 @@
     ]
   },
   "flyby_finish_dates": {},
-  "assotiated_flat_builds_with_flybys": {},
+  "assotiated_flat_builds_with_flybys": {
+    "1-outside": ["4"]
+  },
   "project_google_map_location": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10942.559000223819!2d30.31921378578441!3d50.39360867240467!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cbde7356ffcd%3A0xdbec15c58c950790!2z0JbQmiDQhNCy0YDQvtC_0LXQudGB0YzQutGWINCb0LjQv9C60LggLSDQodC-0YTRltGX0LLRgdGM0LrQsCDQkdC-0YDRidCw0LPRltCy0LrQsA!5e1!3m2!1suk!2sua!4v1772177985368!5m2!1suk!2sua",
   "infoBoxes": {
     "general_flyby_button_titles": {
