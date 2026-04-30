@@ -293,7 +293,7 @@ class SliderModel extends EventEmitter {
     if (type === 'flat') {
       if (!id) return;
       const flat = this.getFlat(+id);
-      if (flat.sale !== 1 && flat.sale !== 2) return;
+      // if (flat.sale !== 1 && flat.sale !== 2) return;
     }
 
     if (/flyby|flat|floor/.test(type)) {
