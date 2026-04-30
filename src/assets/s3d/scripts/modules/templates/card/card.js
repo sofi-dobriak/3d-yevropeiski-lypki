@@ -93,60 +93,42 @@ function Card(
   const $price = () => {
     if (!showPrices) return '';
     if (currency.trim() == '$') {
-      return `
+      return price
+        ? `
           <div class="s3d-card__price">
             ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
           </div>
 
-      `;
+      `
+        : ``;
     }
-    return `
+    return price
+      ? `
       <div class="s3d-card__price total">
         ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
       </div>
-    `;
+    `
+      : ``;
   };
   const $priceM2 = () => {
     if (!showPrices) return '';
     if (currency.trim() == '$') {
-      return `
+      return price_m2
+        ? `
           <div class="s3d-card__price">
             ${numberWithCommas(price_m2)} ${i18n.t('Flat.information.priceText')}
           </div>
-      `;
+      `
+        : ``;
     }
-    return `
+    return price_m2
+      ? `
       <div class="s3d-card__price m2">
         ${numberWithCommas(price_m2)} ${i18n.t('currency_label_m2')}
       </div>
-    `;
+    `
+      : ``;
   };
-
-  // const $priceM2 = () => {
-  //   if (!showPrices) return '';
-  //   if (currency.trim() == '$') {
-  //     return `
-  //       <div class="s3d-card__row">
-  //         <div class="s3d-card__name">
-  //           ${i18n.t('Flat.information.priceText')}
-  //           ${price_m2}
-  //           ${i18n.t('Flat.information.per')}
-  //           ${i18n.t('Flat.information.area_unit')}
-  //         </div>
-  //       </div>
-  //     `;
-  //   }
-  //   return `
-  //     <div class="s3d-card__row">
-  //       <div class="s3d-card__name">
-  //         ${price_m2}
-  //         ${i18n.t('Flat.information.priceText')}
-  //         ${i18n.t('Flat.information.per')}
-  //         ${i18n.t('Flat.information.area_unit')}
-  //       </div>
-  //     </div>
-  //   `;
-  // };
 
   const isFavourite = favouritesIds$.value.includes(id);
 

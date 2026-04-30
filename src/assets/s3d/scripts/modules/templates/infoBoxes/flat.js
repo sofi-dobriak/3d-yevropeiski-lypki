@@ -90,34 +90,42 @@ function Flat(i18n, data) {
   const $price = () => {
     if (!show_prices) return '';
     if (currency.trim() == '$') {
-      return `
+      return price
+        ? `
           <div class="s3d-card__price">
             ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
           </div>
 
-      `;
+      `
+        : ``;
     }
-    return `
+    return price
+      ? `
       <div class="s3d-card__price total">
         ${numberWithCommas(price)} ${i18n.t('Flat.information.priceText')}
       </div>
-    `;
+    `
+      : ``;
   };
 
   const $priceM2 = () => {
     if (!show_prices) return '';
     if (currency.trim() == '$') {
-      return `
+      return price_m2
+        ? `
           <div class="s3d-card__price">
             ${numberWithCommas(price_m2)} ${i18n.t('Flat.information.priceText')}
           </div>
-      `;
+      `
+        : ``;
     }
-    return `
+    return price_m2
+      ? `
       <div class="s3d-card__price m2">
         ${numberWithCommas(price_m2)} ${i18n.t('currency_label_m2')}
       </div>
-    `;
+    `
+      : ``;
   };
 
   return `

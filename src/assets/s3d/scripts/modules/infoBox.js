@@ -283,13 +283,13 @@ class InfoBox {
     const createTemplate = {
       floor: renderInfoFloor,
       flat: renderInfoFlat,
-      flatSold: renderInfoFlatSold,
+      flatSold: renderInfoFlat, //renderInfoFlatSold
       reserved: renderInfoFlat,
       booked: renderInfoFlat,
       notAvailable: renderInfoNotAvailable,
       section: renderInfoBuild,
       flyby: renderInfoBuild,
-      sold: renderInfoSold,
+      sold: renderInfoFlat, //renderInfoSold
       slider_popup: renderSliderPopup,
       closed: renderInfoClosed,
       infrastructure: renderInfoInfrastructure,

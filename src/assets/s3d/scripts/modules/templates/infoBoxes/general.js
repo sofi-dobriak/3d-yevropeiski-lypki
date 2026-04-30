@@ -19,7 +19,7 @@ function general(i18n, data) {
     buttonType,
     show_prices,
   } = data;
-  console.log('data: ', data);
+  console.log('general data: ', data);
   if (!type) {
     return '';
   }
