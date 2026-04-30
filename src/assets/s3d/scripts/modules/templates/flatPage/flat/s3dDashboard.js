@@ -92,7 +92,7 @@ export default function s3dDashboard(
             </div>
             <div class="s3d-flat-dashboard__info-details">
                     ${
-                      showPrices
+                      showPrices && flat.price
                         ? `<div class="s3d-flat-dashboard__info-details-item">
                         <span class="fonts-3d-h1">
                          ${
